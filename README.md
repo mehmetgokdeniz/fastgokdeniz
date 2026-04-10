@@ -170,3 +170,6 @@ Bu proje `.github/workflows/ios_build.yml` ile iOS için IPA oluşturma yeteneğ
 2. `flutter pub run build_runner build --delete-conflicting-outputs` çalıştırın.
 3. Firebase dosyalarınızı yerel olarak ekleyin, ama bunları commitlemeyin.
 4. Değişiklikleri git ile takip edip GitHub'a pushlayın.
+
+
+![Uygulama Ekran Görüntüsü]([resim_linki_veya_dosya_yolu](https://i.hizliresim.com/dqxfqh3.jpeg))

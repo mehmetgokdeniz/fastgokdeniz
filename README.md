@@ -174,6 +174,6 @@ Bu proje `.github/workflows/ios_build.yml` ile iOS için IPA oluşturma yeteneğ
 
 ## Ekran Görüntüleri
 
-| Giriş Ekranı | Ana Sayfa | Profil Sayfası |
+| Profil Sayfası | Ana Sayfa | Ayarlar |
 | :---: | :---: | :---: |
-| <img src="https://i.hizliresim.com/dqxfqh3.jpeg" width="200"> | <img src="resim_linki_2" width="200"> | <img src="resim_linki_3" width="200"> |
+| <img src="https://i.hizliresim.com/dqxfqh3.jpeg" width="200"> | <img src="https://i.hizliresim.com/jnosz4e.jpeg" width="200"> | <img src="https://i.hizliresim.com/ljbkuhi.jpeg" width="200"> |

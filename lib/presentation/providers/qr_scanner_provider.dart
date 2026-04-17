@@ -111,6 +111,24 @@ class QRScannerProvider with ChangeNotifier {
     }
   }
 
+  /// GitHub profilini aç
+  Future<void> openGitHub(String username) async {
+    try {
+      await AppLauncherService.launchGitHub(username: username);
+    } catch (e) {
+      throw Exception('GitHub açılamadı: $e');
+    }
+  }
+
+  /// LinkedIn profilini aç
+  Future<void> openLinkedIn(String username) async {
+    try {
+      await AppLauncherService.launchLinkedIn(username: username);
+    } catch (e) {
+      throw Exception('LinkedIn açılamadı: $e');
+    }
+  }
+
   /// Telefon ara
   Future<void> openPhoneCall(String phoneNumber) async {
     try {

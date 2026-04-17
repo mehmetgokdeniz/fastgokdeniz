@@ -16,7 +16,6 @@ import 'view/screens/splash_screen.dart';
 import 'view/screens/profile_creation_screen.dart';
 import 'view/screens/profile_detail_screen.dart';
 import 'view/screens/home_screen.dart';
-import 'view/screens/link_creator_screen.dart';
 import 'view/screens/message_screen.dart';
 import 'view/screens/qr_screen.dart';
 import 'view/screens/search_history_screen.dart';
@@ -29,7 +28,9 @@ void main() async {
     if (!kIsWeb) {
       await HiveService.initialize();
     } else {
-      debugPrint('Web platformu: Hive geçici almıyor (SharedPreferences kullanılıyor)');
+      debugPrint(
+        'Web platformu: Hive geçici almıyor (SharedPreferences kullanılıyor)',
+      );
     }
     await di.setupDependencies();
   } catch (e) {
@@ -61,14 +62,10 @@ class MyApp extends StatelessWidget {
           // ThemeProvider initialize olmadan bekle
           if (!themeProvider.isInitialized) {
             return const MaterialApp(
-              home: Scaffold(
-                body: Center(
-                  child: CircularProgressIndicator(),
-                ),
-              ),
+              home: Scaffold(body: Center(child: CircularProgressIndicator())),
             );
           }
-          
+
           return MaterialApp(
             title: 'FastGokdeniz',
             theme: AppTheme.lightTheme,
@@ -83,7 +80,6 @@ class MyApp extends StatelessWidget {
               '/profile': (context) => const ProfileCreationScreen(),
               '/profile-detail': (context) => const ProfileDetailScreen(),
               '/': (context) => const HomeScreen(),
-              '/link-creator': (context) => const LinkCreatorScreen(),
               '/message': (context) => const MessageScreen(),
               '/qr': (context) => const QRScreen(),
               '/history': (context) => const SearchHistoryScreen(),

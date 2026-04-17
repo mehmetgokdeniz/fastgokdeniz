@@ -121,38 +121,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
     );
   }
 
-  Future<void> _clearSearchHistory() async {
-    showDialog(
-      context: context,
-      builder: (_) => AlertDialog(
-        title: const Text('Geçmiş Temizle'),
-        content: const Text(
-          'Tüm tarama ve arama geçmişi silinecektir. Devam etmek istediğinizden emin misiniz?',
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('İptal'),
-          ),
-          TextButton(
-            onPressed: () async {
-              await _storageService.clearSearchHistory();
-              if (mounted) {
-                Navigator.pop(context);
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text('Geçmiş temizlendi'),
-                    backgroundColor: Colors.green,
-                  ),
-                );
-              }
-            },
-            child: const Text('Temizle', style: TextStyle(color: Colors.red)),
-          ),
-        ],
-      ),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -653,22 +621,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           ),
                         );
                       },
-                    ),
-
-                    const Divider(),
-
-                    // Geçmişi Temizle
-                    ListTile(
-                      leading: const Icon(
-                        Icons.delete_sweep,
-                        color: Colors.orange,
-                      ),
-                      title: const Text(
-                        'Geçmişi Temizle',
-                        style: TextStyle(color: Colors.orange),
-                      ),
-                      subtitle: const Text('Tüm tarama ve arama geçmişi'),
-                      onTap: _clearSearchHistory,
                     ),
 
                     const Divider(),

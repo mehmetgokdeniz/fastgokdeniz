@@ -15,8 +15,6 @@ class ProfileCreationScreen extends StatefulWidget {
 
 class _ProfileCreationScreenState extends State<ProfileCreationScreen> {
   final _usernameController = TextEditingController();
-  final _emailController = TextEditingController();
-  final _phoneController = TextEditingController();
   final _storageService = AppStorageService();
   File? _selectedImage;
   String? _existingImagePath;
@@ -35,13 +33,9 @@ class _ProfileCreationScreenState extends State<ProfileCreationScreen> {
     try {
       final username = (await _storageService.getUsername()) ?? '';
       final imagePath = (await _storageService.getUserImagePath()) ?? '';
-      final email = (await _storageService.getUserEmail()) ?? '';
-      final phone = (await _storageService.getUserPhone()) ?? '';
 
       setState(() {
         _usernameController.text = username;
-        _emailController.text = email;
-        _phoneController.text = phone;
         _existingImagePath = imagePath.isNotEmpty ? imagePath : null;
       });
     } catch (e) {
@@ -56,8 +50,6 @@ class _ProfileCreationScreenState extends State<ProfileCreationScreen> {
   @override
   void dispose() {
     _usernameController.dispose();
-    _emailController.dispose();
-    _phoneController.dispose();
     super.dispose();
   }
 
@@ -141,8 +133,6 @@ class _ProfileCreationScreenState extends State<ProfileCreationScreen> {
       await _storageService.createProfile(
         username: _usernameController.text,
         imagePath: _selectedImage?.path ?? _existingImagePath,
-        email: _emailController.text.isNotEmpty ? _emailController.text : null,
-        phone: _phoneController.text.isNotEmpty ? _phoneController.text : null,
       );
 
       if (mounted) {
@@ -291,62 +281,6 @@ class _ProfileCreationScreenState extends State<ProfileCreationScreen> {
                     decoration: InputDecoration(
                       hintText: 'Kullanıcı adınızı girin',
                       prefixIcon: const Icon(Icons.person),
-                      contentPadding: const EdgeInsets.symmetric(
-                        horizontal: 16,
-                        vertical: 16,
-                      ),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 24),
-                  // E-posta
-                  const Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      'E-posta (Opsiyonel)',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 12),
-                  TextField(
-                    controller: _emailController,
-                    keyboardType: TextInputType.emailAddress,
-                    decoration: InputDecoration(
-                      hintText: 'E-posta adresinizi girin',
-                      prefixIcon: const Icon(Icons.email),
-                      contentPadding: const EdgeInsets.symmetric(
-                        horizontal: 16,
-                        vertical: 16,
-                      ),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 24),
-                  // Telefon
-                  const Align(
-                    alignment: Alignment.centerLeft,
-                    child: Text(
-                      'Telefon (Opsiyonel)',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 12),
-                  TextField(
-                    controller: _phoneController,
-                    keyboardType: TextInputType.phone,
-                    decoration: InputDecoration(
-                      hintText: 'Telefon numaranızı girin',
-                      prefixIcon: const Icon(Icons.phone),
                       contentPadding: const EdgeInsets.symmetric(
                         horizontal: 16,
                         vertical: 16,

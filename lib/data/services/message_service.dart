@@ -37,6 +37,12 @@ class MessageService {
       case MessageType.telegram:
         url = 'https://t.me/$phone';
         break;
+      case MessageType.github:
+        url = 'https://github.com/$phone';
+        break;
+      case MessageType.linkedin:
+        url = 'https://linkedin.com/in/$phone';
+        break;
     }
 
     if (await canLaunchUrl(Uri.parse(url))) {

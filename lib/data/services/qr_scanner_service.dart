@@ -127,4 +127,26 @@ class QRScannerService {
       rethrow;
     }
   }
+
+  Future<void> openGitHub(String username) async {
+    try {
+      if (username.isEmpty) {
+        throw Exception('Kullanıcı adı boş');
+      }
+      await AppLauncherService.launchGitHub(username: username);
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  Future<void> openLinkedIn(String username) async {
+    try {
+      if (username.isEmpty) {
+        throw Exception('Kullanıcı adı boş');
+      }
+      await AppLauncherService.launchLinkedIn(username: username);
+    } catch (e) {
+      rethrow;
+    }
+  }
 }

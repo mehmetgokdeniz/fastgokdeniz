@@ -8,4 +8,6 @@ enum MessageType {
   facebook,
   youtube,
   telegram,
+  github,
+  linkedin,
 }

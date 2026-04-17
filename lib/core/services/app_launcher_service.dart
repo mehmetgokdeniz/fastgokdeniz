@@ -343,6 +343,23 @@ class AppLauncherService {
     }
   }
 
+  /// GitHub profilini aç
+  static Future<void> launchGitHub({required String username}) async {
+    try {
+      String user = username.startsWith('@') ? username.substring(1) : username;
+      user = user.replaceAll(RegExp(r'[^a-zA-Z0-9\-]'), '');
+      final String githubUrl = 'https://github.com/$user';
+
+      if (await canLaunchUrl(Uri.parse(githubUrl))) {
+        await launchUrl(Uri.parse(githubUrl), mode: LaunchMode.externalApplication);
+      } else {
+        throw Exception('GitHub açılamadı');
+      }
+    } catch (e) {
+      rethrow;
+    }
+  }
+
   /// Telefon ara
   static Future<void> launchPhoneCall({required String phoneNumber}) async {
     try {

@@ -131,6 +131,30 @@ Bu proje `.github/workflows/ios_build.yml` ile iOS için IPA oluşturma yeteneğ
 
 ## 📝 Kod ve Özellik Özetleri
 
+## 📣 v1.0.0.2 Güncelleme Notu
+
+GitHub deposu: https://github.com/mehmetgokdeniz/fastgokdeniz
+
+Bu sürümde QR tarayıcı tarafında kararlılık ve kullanım akışı iyileştirilmiştir:
+
+- QR Tarayıcı sekme geçiş hatası düzeltildi:
+	- "QR kodu tara -> QR oluşturucu -> tekrar QR kodu tara" akışında görülen kamera ünlem hatası giderildi.
+	- Tarayıcı kontrolcüsü ekran bazlı yönetilecek şekilde güncellendi.
+- Kamera yaşam döngüsü iyileştirildi:
+	- Sekmeye girerken güvenli başlatma, sekmeden çıkarken güvenli durdurma uygulandı.
+	- Canlı tarama sonrası yanlış zamanda yeniden başlatma yarışı engellendi.
+- URL açma davranışı geliştirildi:
+	- Şemasız bağlantılar için otomatik https ekleme.
+	- Boşluk/format kaynaklı URL parse sorunlarına karşı normalize etme.
+	- Açılamayan veya geçersiz URL için kullanıcıya açıklayıcı geri bildirim.
+- QR tarayıcı metinleri güncellendi:
+	- Yeni URL hata mesajları TR/EN/AR ve çoklu dil fallback kapsamına eklendi.
+
+Sürüm bilgisi güncellendi:
+
+- Uygulama içi sürüm etiketi: v1.0.0.2
+- Paket sürümü: 1.0.0+2
+
 ### Çekirdek Servisler
 
 - `lib/core/services/app_launcher_service.dart`: WhatsApp, Telegram, Discord, Instagram, Facebook, YouTube, SMS, Email, Telefon araması ve web yönlendirmelerini yönetir.

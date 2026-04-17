@@ -1,5 +1,49 @@
 # Firebase Kurulum Rehberi
 
+## Google Drive Link Olusturucu (Zorunlu)
+
+Link olusturucu ekrani Google Sign-In + Google Drive API kullanir.
+Asagidaki adimlar tamamlanmadan "Google Drive ile Link Olustur" calismaz.
+
+### 0. Google Cloud Konsol Hazirligi
+1. https://console.cloud.google.com uzerinden proje ac.
+2. APIs & Services > Library > `Google Drive API` etkinlestir.
+3. OAuth consent screen olustur (External/Internal).
+4. Test kullanicilarini ekle (gelistirme asamasinda zorunlu olabilir).
+
+### 1. Android OAuth Client
+1. APIs & Services > Credentials > Create Credentials > OAuth client ID > Android.
+2. Package name: `com.example.mobilapptry`
+3. SHA-1 (debug):
+```bash
+keytool -list -v -keystore ~/.android/debug.keystore -alias androiddebugkey -storepass android -keypass android
+```
+4. SHA-1'i Android OAuth istemcisine ekle.
+
+### 2. iOS OAuth Client
+1. OAuth client ID > iOS olustur.
+2. Bundle ID, Xcode'daki Runner bundle id ile ayni olmali.
+3. iOS istemcisinin `REVERSED_CLIENT_ID` degerini al.
+4. `ios/Runner/Info.plist` icine URL scheme olarak ekle (CFBundleURLTypes).
+
+### 3. Firebase Dosyalari (Opsiyonel ama onerilir)
+1. `android/app/google-services.json`
+2. `ios/Runner/GoogleService-Info.plist`
+
+Bu dosyalar projede yoksa Google girisi cihazda basarisiz olabilir.
+
+### 4. Kurulum Sonrasi
+```bash
+flutter clean
+flutter pub get
+flutter run
+```
+
+### 5. Yaygin Hatalar
+- `ApiException: 10` -> SHA-1 veya package name/OAuth client eslesmiyor.
+- `DEVELOPER_ERROR` -> OAuth client yanlis platform tipinde.
+- iOS'da geri donmeme -> `CFBundleURLTypes` icinde `REVERSED_CLIENT_ID` eksik.
+
 ## Android Setup
 
 ### 1. Firebase Project Oluştur
